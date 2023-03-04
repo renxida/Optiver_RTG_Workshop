@@ -1,3 +1,4 @@
+ARG VARIANT=ubuntu-22.04
 FROM mcr.microsoft.com/devcontainers/anaconda:0-3
 
 # Copy environment.yml (if found) to a temp location so we update the environment. Also
@@ -7,5 +8,5 @@ RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bi
     && rm -rf /tmp/conda-tmp
 
 # [Optional] Uncomment this section to install additional OS packages.
-# RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    # && apt-get -y install --no-install-recommends qt
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends qt6-base-dev
