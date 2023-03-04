@@ -26,10 +26,10 @@ import traceback
 import ready_trader_go.exchange
 import ready_trader_go.trader
 
-try:
-    from ready_trader_go.hud.__main__ import main as hud_main, replay as hud_replay
-except ImportError:
-    hud_main = hud_replay = None
+# try:
+from ready_trader_go.hud.__main__ import main as hud_main, replay as hud_replay
+# except ImportError:
+    # hud_main = hud_replay = None
 
 
 def no_heads_up_display() -> None:
