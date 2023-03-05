@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Given a base name and a new name, copy basename.py and basename.json to newname.py and newname.json
+# and replace all instances of basename with newname in the new files. Also 
+
+# Usage: cptr basename newname
+
+# Example: cptr foo bar will copy foo.py and foo.json to bar.py and bar.json and replace all instances of foo with bar in bar.py and bar.json
+# also registers newname in exchange.json
+
+
+
+
+cp $1.py $2.py
+cp $1.json $2.json
+sed -i "s/$1/$2/g" $2.py
+sed -i "s/$1/$2/g" $2.json
+
+# update exchange.json
+# Before:
+# ...
+#   "Traders": {
+#    "basename": "secret",
+#    "trader_adv": "secret",
+#    "trader_better": "secret"
+#   }
+# ...
+# After:
+# ...
+#   "Traders": {
+#     "newname": "secret",
+#     "basename": "secret",
+#    "trader_adv": "secret",
+#    "trader_better": "secret"
+#   }
+# ...
+
