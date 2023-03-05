@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/devcontainers/miniconda:0-3
 
 
 
-### enable x11 forwarding based o
+### enable x11 forwarding based on
 # https://github.com/microsoft/vscode-dev-containers/blob/main/repository-containers/images/github.com/microsoft/vscode/.devcontainer/base.Dockerfile
 COPY .devcontainer/library-scripts/desktop-lite-debian.sh /tmp/library-scripts/
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \

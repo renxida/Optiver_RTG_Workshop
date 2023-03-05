@@ -10,7 +10,10 @@
 		"ghcr.io/devcontainers/features/sshd:1": {
 			"version": "latest"
 		}
-	}
+	},
+	"overrideCommand": false,
+	"forwardPorts": [6080, 5901]
+
 	
 	
 
