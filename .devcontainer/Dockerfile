@@ -1,5 +1,11 @@
-# ARG VARIANT=ubuntu-22.04
-FROM mcr.microsoft.com/devcontainers/anaconda:0.202.9-3
+FROM mambaorg/micromamba:1.3.1-jammy
+
+RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends qt6-base-dev
+
+COPY --chown=$MAMBA_USER:$MAMBA_USER environment.yaml /tmp/env.yaml
+RUN micromamba install -y -n base -f /tmp/env.yaml && \
+    micromamba clean --all --yes
 
 # FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 # Copy environment.yml (if found) to a temp location so we update the environment. Also
@@ -13,9 +19,9 @@ FROM mcr.microsoft.com/devcontainers/anaconda:0.202.9-3
 # # Put conda in path so we can use conda activate
 # ENV PATH=$CONDA_DIR/bin:$PATH
 
-COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
-RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bin/conda env update -n base -f /tmp/conda-tmp/environment.yml; fi \
-    && rm -rf /tmp/conda-tmp
+# COPY environment.yml* .devcontainer/noop.txt /tmp/conda-tmp/
+# RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bin/conda env update -n base -f /tmp/conda-tmp/environment.yml; fi \
+#     && rm -rf /tmp/conda-tmp
 
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
