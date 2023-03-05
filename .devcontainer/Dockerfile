@@ -10,7 +10,7 @@ RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bi
 # for debian bullseye
 RUN echo 'deb http://deb.debian.org/debian bullseye-backports main' | tee /etc/apt/sources.list.d/bullseye-backports.list \
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends -t bullseye-backports qt6base-dev
+    && apt-get -y install --no-install-recommends -t bullseye-backports qt6-base-dev
 
 # enable x11 forwarding based on
 # https://github.com/microsoft/vscode-dev-containers/blob/main/repository-containers/images/github.com/microsoft/vscode/.devcontainer/base.Dockerfile
