@@ -36,7 +36,8 @@
     "PositionLimit": 100
   },
   "Traders": {
-    "TraderOne": "secret",
-    "TraderTwo": "secret"
+    "trader_simple": "secret",
+    "trader_adv": "secret",
+    "trader_better": "secret"
   }
 }
