@@ -6,12 +6,6 @@ RUN if [ -f "/tmp/conda-tmp/environment.yml" ]; then umask 0002 && /opt/conda/bi
 # RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
 #     && apt-get -y install --no-install-recommends qt6-base-dev
 
-
-# for debian bullseye
-RUN echo 'deb http://deb.debian.org/debian bullseye-backports main' | tee /etc/apt/sources.list.d/bullseye-backports.list \
-    && apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends -t bullseye-backports qt6-base-dev
-
 # enable x11 forwarding based on
 # https://github.com/microsoft/vscode-dev-containers/blob/main/repository-containers/images/github.com/microsoft/vscode/.devcontainer/base.Dockerfile
 COPY .devcontainer/library-scripts/desktop-lite-debian.sh /tmp/library-scripts/
@@ -30,6 +24,12 @@ ENV DBUS_SESSION_BUS_ADDRESS="autolaunch:" \
 	DISPLAY=":1" \
 	LANG="en_US.UTF-8" \
 	LANGUAGE="en_US.UTF-8"
+
+
+# for debian bullseye
+RUN echo 'deb http://deb.debian.org/debian bullseye-backports main' | tee /etc/apt/sources.list.d/bullseye-backports.list \
+    && apt-get update && export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends -t bullseye-backports qt6-base-dev
 
 ENTRYPOINT ["/usr/local/share/desktop-init.sh"]
 CMD ["sleep", "infinity"]
