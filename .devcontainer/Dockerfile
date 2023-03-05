@@ -4,7 +4,7 @@ FROM mambaorg/micromamba:1.3.1-jammy
 #     && apt-get -y install --no-install-recommends qt6-base-dev
 
 COPY --chown=$MAMBA_USER:$MAMBA_USER environment.yml /tmp/environment.yml
-RUN micromamba install -y -n base -f /tmp/env.yml && \
+RUN micromamba install -y -n base -f /tmp/environment.yml && \
     micromamba clean --all --yes
 
 # FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
