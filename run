@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#Shebang bash
+
+# if rtg conda environment exists, activate
+if [ -d ~/anaconda3/envs/rtg ]; then
+    source activate rtg
+fi
+
+python3 rtg.py run trader*.py
+
