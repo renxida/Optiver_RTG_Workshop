@@ -38,6 +38,7 @@
   "Traders": {
     "trader_simple": "secret",
     "trader_adv": "secret",
+    "trader_adv_tight":"secret",
     "trader_better": "secret"
   }
 }

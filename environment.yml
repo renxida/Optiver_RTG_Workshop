@@ -1,9 +1,9 @@
 # run: conda env create --file environment.yml
-name: base
+name: rtg
 channels:
   - conda-forge
 dependencies:
-- python
+- python=3.8
 - pip
 - numpy  # pin version for conda
 - pip:
